@@ -1,0 +1,10 @@
+variable "bucket" {
+    default = ["bucekt-name1","bucekt-name2","bucekt-name3"]
+}
+
+variable "users" {
+    default = [
+        "arn:aws:iam::AWS_ID:root",
+        "arn:aws:iam::AWS_ID:root"
+    ]
+}
