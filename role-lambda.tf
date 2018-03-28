@@ -1,6 +1,6 @@
-resource "aws_iam_role" "bei-lambda-role" {
+resource "aws_iam_role" "lambda-role" {
   description = "role for lambda function to ratoate access & secret keys"
-  name = "${var.bei-lambda-role-name}"
+  name = "${var.lambda-role-name}"
   force_detach_policies = true
   assume_role_policy = <<EOF
 {
@@ -40,8 +40,8 @@ resource "aws_iam_policy" "store-credentials-policy" {
 }
 EOF
 }
-resource "aws_iam_role_policy_attachment" "bei-lambda-attachment1" {
-    role       = "${aws_iam_role.bei-lambda-role.name}"
+resource "aws_iam_role_policy_attachment" "lambda-attachment1" {
+    role       = "${aws_iam_role.lambda-role.name}"
     policy_arn = "${aws_iam_policy.store-credentials-policy.arn}"
 }
 
@@ -67,7 +67,7 @@ resource "aws_iam_policy" "rotate-keys-policy" {
 }
 EOF
 }
-resource "aws_iam_role_policy_attachment" "bei-lambda-attachment2" {
-    role       = "${aws_iam_role.bei-lambda-role.name}"
+resource "aws_iam_role_policy_attachment" "lambda-attachment2" {
+    role       = "${aws_iam_role.lambda-role.name}"
     policy_arn = "${aws_iam_policy.rotate-keys-policy.arn}"
 }

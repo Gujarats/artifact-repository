@@ -1,6 +1,6 @@
-resource "aws_iam_role" "bei-developers-get-credentials" {
+resource "aws_iam_role" "developers-get-credentials" {
   description = "role for all developers to get the read access for s3"
-  name = "bei-developers-get-credentials"
+  name = "${var.role-developers-get-credentials}"
   force_detach_policies = true
   assume_role_policy = <<EOF
 {
@@ -43,8 +43,8 @@ resource "aws_iam_policy" "get-credentials-parameter-store" {
 EOF
 }
 
-resource "aws_iam_role_policy_attachment" "bei-developers-get-credentials-attachment" {
-    role       = "${aws_iam_role.bei-developers-get-credentials.name}"
+resource "aws_iam_role_policy_attachment" "developers-get-credentials-attachment" {
+    role       = "${aws_iam_role.developers-get-credentials.name}"
     policy_arn = "${aws_iam_policy.get-credentials-parameter-store.arn}"
 }
 
