@@ -18,13 +18,12 @@ variable "cloud-watch-cron" {
 }
 
 # lambda-function-variables
-variable "iam-user-lambda" {
-    description = "iam user for lambda to rotate access & secret keys"
+variable "region" {
+    description = "define which region your AWS account is"
     default = ""
 }
 
-variable "region" {
-    description = "define which region your AWS account is"
+variable "lambda-function-name" {
     default = ""
 }
 
