@@ -1,38 +1,45 @@
-variable "bucket" {
-    default = ["bucekt-name1","bucekt-name2","bucekt-name3"]
+#S3
+variable "single-bucket" {
+    description = "S3 bucket for artifact repository"
+    default = "bucket-name"
 }
 
-variable "users" {
+#account
+variable "accounts" {
     default = [
-        "arn:aws:iam::AWS_ID:root",
-        "arn:aws:iam::AWS_ID:root"
+        "arn:aws:iam::aws-id:root",
+        "arn:aws:iam::aws-d:root",
     ]
 }
 
-# cloud watch event to trigger lambda
-variable "cloud-watch-rule-name" {
+# iam-user-shared-reader
+variable "iam-user-s3-reader" {
+    description = "iam user for S3 read access "
     default = ""
 }
-variable "cloud-watch-cron" {
-    default = ""
-}
-
-# lambda-function-variables
-variable "region" {
-    description = "define which region your AWS account is"
+variable "policy-s3-reader" {
     default = ""
 }
 
-variable "lambda-function-name" {
+# role-reader-developers
+variable "role-developers-get-credentials" {
+    default = ""
+}
+variable "policy-get-credentials-parameter-store" {
+    default = ""
+}
+variable "resource-ssm-credentials" {
     default = ""
 }
 
-#role-lambda-variables
+# role-lambda
 variable "lambda-role-name" {
     default = ""
 }
-
-variable "store-credentials-policy-name" {
+variable "policy-store-credentials-name" {
+    default = ""
+}
+variable "policy-rotate-keys-name" {
     default = ""
 }
 
@@ -40,14 +47,35 @@ variable "store-credentials-policy-name" {
 variable "aws-region" {
 	default = ""
 }
-
 variable "aws-access-key" {
 	default = ""
 }
 variable "aws-secret-key" {
 	default = ""
 }
-
 variable "aws-version" {
+    default = ""
+}
+
+# lambda function
+variable "region" {
+    description = "define which region your AWS account is"
+    default = ""
+}
+variable "lambda-function-name" {
+    default = ""
+}
+variable "lambda-time-out" {
+    default = ""
+}
+variable "lambda-runtime" {
+    default = ""
+}
+
+# cloud-watch-event
+variable "cloud-watch-rule-name" {
+    default = ""
+}
+variable "cloud-watch-cron" {
     default = ""
 }
