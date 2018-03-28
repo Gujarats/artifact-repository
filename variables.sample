@@ -27,23 +27,27 @@ variable "lambda-function-name" {
     default = ""
 }
 
-# credentials
-variable "aws_region" {
-	default = ""
-}
-
-variable "aws_access_key" {
-	default = ""
-}
-variable "aws_secret_key" {
-	default = ""
-}
-
 #role-lambda-variables
 variable "lambda-role-name" {
     default = ""
 }
 
 variable "store-credentials-policy-name" {
+    default = ""
+}
+
+#provider
+variable "aws-region" {
+	default = ""
+}
+
+variable "aws-access-key" {
+	default = ""
+}
+variable "aws-secret-key" {
+	default = ""
+}
+
+variable "aws-version" {
     default = ""
 }
