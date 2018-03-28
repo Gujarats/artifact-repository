@@ -23,7 +23,7 @@ EOF
 }
 
 resource "aws_iam_policy" "get-credentials-parameter-store" {
-    name        = "${var.role-get-credentials-parameter-store-name}"
+    name        = "${var.policy-get-credentials-parameter-store}"
     description = "For getting the acces & secret keys from parameter store"
     policy = <<EOF
 {
@@ -36,7 +36,7 @@ resource "aws_iam_policy" "get-credentials-parameter-store" {
                 "ssm:GetParameters",
                 "ssm:GetParameter"
             ],
-            "Resource": "*"
+            "Resource": "${var.resource-ssm-credentials}"
         }
     ]
 }
