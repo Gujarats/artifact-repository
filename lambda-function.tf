@@ -11,7 +11,7 @@ resource "aws_lambda_function" "lambda-function-rotate-keys" {
   description = "roate the access & secret keys IAM user"
   filename         = "aws-roate-keys.zip"
   function_name    = "${var.lambda-function-name}"
-  role             = "${aws_iam_role.bei-lambda-role.arn}"
+  role             = "${aws_iam_role.lambda-role.arn}"
   handler          = "aws-rotate-keys"
   source_code_hash = "${base64sha256(file("aws-rotate-keys.zip"))}"
   runtime          = "go1.x"
