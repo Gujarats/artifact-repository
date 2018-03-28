@@ -40,7 +40,7 @@ resource "aws_iam_policy" "store-credentials-policy" {
 }
 EOF
 }
-resource "aws_iam_role_policy_attachment" "lambda-attachment1" {
+resource "aws_iam_role_policy_attachment" "role-lambda-attachment1" {
     role       = "${aws_iam_role.lambda-role.name}"
     policy_arn = "${aws_iam_policy.store-credentials-policy.arn}"
 }
@@ -54,20 +54,22 @@ resource "aws_iam_policy" "rotate-keys-policy" {
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "StoreCredentials",
+            "Sid": "RotateKeysForALlIAMusers",
             "Effect": "Allow",
             "Action": [
-                "ssm:PutParameter",
-                "ssm:DescribeParameters",
-                "ssm:GetParameter"
+                "iam:ListAccessKeys",
+                "iam:GetAccessKeyLastUsed",
+                "iam:DeleteAccessKey",
+                "iam:CreateAccessKey",
+                "iam:UpdateAccessKey"
             ],
-            "Resource": "*"
+            "Resource": "${aws_iam_user.developer.arn}"
         }
     ]
 }
 EOF
 }
-resource "aws_iam_role_policy_attachment" "lambda-attachment2" {
+resource "aws_iam_role_policy_attachment" "role-lambda-attachment2" {
     role       = "${aws_iam_role.lambda-role.name}"
     policy_arn = "${aws_iam_policy.rotate-keys-policy.arn}"
 }
