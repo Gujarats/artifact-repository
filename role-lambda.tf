@@ -1,6 +1,6 @@
 resource "aws_iam_role" "bei-lambda-role" {
   description = "role for lambda function to ratoate access & secret keys"
-  name = "bei-lambda"
+  name = "${var.bei-lambda-role-name}"
   force_detach_policies = true
   assume_role_policy = <<EOF
 {
@@ -20,7 +20,7 @@ EOF
 
 # Policy 
 resource "aws_iam_policy" "store-credentials-policy" {
-    name        = "StoreCredentialsParameterStore"
+    name        = "${var.store-credentials-policy-name}"
     description = "For storing the acces & secret keys to parameter store"
     policy = <<EOF
 {
