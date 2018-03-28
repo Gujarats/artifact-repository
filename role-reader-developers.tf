@@ -23,7 +23,7 @@ EOF
 }
 
 resource "aws_iam_policy" "get-credentials-parameter-store" {
-    name        = "GetCredentialsParameterStore"
+    name        = "${var.role-get-credentials-parameter-store-name}"
     description = "For getting the acces & secret keys from parameter store"
     policy = <<EOF
 {
