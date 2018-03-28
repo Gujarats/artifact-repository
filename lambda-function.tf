@@ -16,6 +16,7 @@ resource "aws_lambda_function" "lambda-function-rotate-keys" {
   source_code_hash = "${base64sha256(file("aws-rotate-keys.zip"))}"
   runtime          = "${var.lambda-runtime}"
   timeout = "${var.lambda-time-out}"
+  publish = true
 
   environment {
     variables = {
