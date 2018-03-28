@@ -20,7 +20,7 @@ EOF
 
 # Policy 
 resource "aws_iam_policy" "store-credentials-policy" {
-    name        = "${var.store-credentials-policy-name}"
+    name        = "${var.policy-store-credentials-name}"
     description = "For storing the acces & secret keys to parameter store"
     policy = <<EOF
 {
@@ -47,7 +47,7 @@ resource "aws_iam_role_policy_attachment" "lambda-attachment1" {
 
 # Policy 
 resource "aws_iam_policy" "rotate-keys-policy" {
-    name        = "RotateKeys"
+    name        = "${var.policy-rotate-keys-name}"
     description = "For storing the acces & secret keys to parameter store"
     policy = <<EOF
 {
