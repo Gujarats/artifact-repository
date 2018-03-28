@@ -8,3 +8,43 @@ variable "users" {
         "arn:aws:iam::AWS_ID:root"
     ]
 }
+
+# cloud watch event to trigger lambda
+variable "cloud-watch-rule-name" {
+    default = ""
+}
+variable "cloud-watch-cron" {
+    default = ""
+}
+
+# lambda-function-variables
+variable "iam-user-lambda" {
+    description = "iam user for lambda to rotate access & secret keys"
+    default = ""
+}
+
+variable "region" {
+    description = "define which region your AWS account is"
+    default = ""
+}
+
+# credentials
+variable "aws_region" {
+	default = ""
+}
+
+variable "aws_access_key" {
+	default = ""
+}
+variable "aws_secret_key" {
+	default = ""
+}
+
+#role-lambda-variables
+variable "lambda-role-name" {
+    default = ""
+}
+
+variable "store-credentials-policy-name" {
+    default = ""
+}
