@@ -1,12 +1,3 @@
-/* In order to upload the lambda function code you need to clone this repo : 
-follow this command : 
-
-$ git clone git@github.com:Gujarats/ark.git
-$ cd ark/app/lambda
-$ GOOS=linux go build -o aws-rotate-keys
-$ zip aws-rotate-keys.zip ./aws-rotate-keys
-*/
-
 resource "aws_lambda_function" "lambda-function-rotate-keys" {
   description = "roate the access & secret keys IAM user"
   filename         = "aws-rotate-keys.zip"
