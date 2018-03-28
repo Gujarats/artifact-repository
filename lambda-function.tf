@@ -16,13 +16,11 @@ resource "aws_lambda_function" "lambda-function-rotate-keys" {
   source_code_hash = "${base64sha256(file("aws-rotate-keys.zip"))}"
   runtime          = "${var.lambda-runtime}"
   timeout = "${var.lambda-time-out}"
-  publish = true
-
   environment {
     variables = {
       PREFIX_ENV_MINE = "MY_APP"
-      MYAPP_USER = "${var.iam-user-s3-reader}"
-      MYAPP_REGION = "${var.region}"
+      MY_APP_USER = "${var.iam-user-s3-reader}"
+      MY_APP_REGION = "${var.region}"
     }
   }
 }
